@@ -1,12 +1,520 @@
 <!DOCTYPE html>
-<html lang = "es">
-    <head>
-        <title>Jaime1120.github.io</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <h1>Hello World</h1>
-        <p>I'm hosted with GitHub Pages.</p>
-    </body>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaime1120.github.io</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #6F4E37;
+            --secondary: #B58969;
+            --light: #F5F5F5;
+            --accent: #D4A76A;
+            --dark: #3C2F2F;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            height: 400px;
+            background-image: url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin: 2rem 0;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent);
+            margin: 0.5rem auto;
+        }
+
+        .promotions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .promo-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .promo-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .promo-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .promo-content {
+            padding: 1.5rem;
+        }
+
+        .promo-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .promo-desc {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .promo-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .new-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .favorites {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-img {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-content {
+            padding: 1rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .product-desc {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .survey-section {
+            background-color: var(--secondary);
+            padding: 3rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .survey-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .survey-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .survey-desc {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .footer-col p {
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .promotions, .favorites {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Café<span>Aroma</span></div>
+            <div class="nav-links">
+                <a href="#">Inicio</a>
+                <a href="#">Menú</a>
+                <a href="#">Nosotros</a>
+                <a href="#">Ubicación</a>
+                <a href="#">Contacto</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bienvenido a Café Aroma</h1>
+            <p>Disfruta de los mejores cafés de especialidad, repostería artesanal y un ambiente acogedor para disfrutar cada momento.</p>
+            <a href="#" class="btn">Ver nuestro menú</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title">Promociones del Día</h2>
+        <div class="promotions">
+            <div class="promo-card">
+                <div class="promo-img" style="background-image: url('/api/placeholder/400/200');"></div>
+                <div class="promo-content">
+                    <h3 class="promo-title">Desayuno Completo</h3>
+                    <p class="promo-desc">Café americano, jugo de naranja y croissant recién horneado.</p>
+                    <div class="promo-price">
+                        <span class="old-price">$120</span>
+                        <span class="new-price">$89</span>
+                    </div>
+                </div>
+            </div>
+            <div class="promo-card">
+                <div class="promo-img" style="background-image: url('/api/placeholder/400/200');"></div>
+                <div class="promo-content">
+                    <h3 class="promo-title">2x1 en Cappuccinos</h3>
+                    <p class="promo-desc">Todos los miércoles de 3pm a 6pm disfruta de 2 cappuccinos por el precio de 1.</p>
+                    <div class="promo-price">
+                        <span class="old-price">$90</span>
+                        <span class="new-price">$45 c/u</span>
+                    </div>
+                </div>
+            </div>
+            <div class="promo-card">
+                <div class="promo-img" style="background-image: url('/api/placeholder/400/200');"></div>
+                <div class="promo-content">
+                    <h3 class="promo-title">Combo Tarde</h3>
+                    <p class="promo-desc">Latte + rebanada de pastel de zanahoria o chocolate por un precio especial.</p>
+                    <div class="promo-price">
+                        <span class="old-price">$150</span>
+                        <span class="new-price">$119</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Productos Favoritos</h2>
+        <div class="favorites">
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('/api/placeholder/300/180');"></div>
+                <div class="product-content">
+                    <h3 class="product-title">Café de Especialidad</h3>
+                    <p class="product-desc">Nuestro café de Chiapas con notas de chocolate y frutos rojos.</p>
+                    <div class="product-price">$60</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('/api/placeholder/300/180');"></div>
+                <div class="product-content">
+                    <h3 class="product-title">Cheesecake</h3>
+                    <p class="product-desc">Nuestro famoso cheesecake horneado con base de galleta y salsa de frutos rojos.</p>
+                    <div class="product-price">$85</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('/api/placeholder/300/180');"></div>
+                <div class="product-content">
+                    <h3 class="product-title">Cold Brew</h3>
+                    <p class="product-desc">Café de especialidad extraído en frío durante 24 horas. Suave y refrescante.</p>
+                    <div class="product-price">$70</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('/api/placeholder/300/180');"></div>
+                <div class="product-content">
+                    <h3 class="product-title">Croissant de Almendra</h3>
+                    <p class="product-desc">Delicioso croissant recién horneado con crema de almendras y azúcar glas.</p>
+                    <div class="product-price">$55</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="survey-section">
+        <div class="survey-container">
+            <h2 class="survey-title">¿Cómo fue tu experiencia?</h2>
+            <p class="survey-desc">Nos encantaría conocer tu opinión para seguir mejorando día a día.</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfnmsPKsnd4MuodWsy8Gp3GLMkFLGuGLw2vu-M5qeGWt9fD0g/viewform?usp=dialog" target="_blank" rel="noopener" class="btn" id="survey-btn">Responder encuesta</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>Café Aroma</h3>
+                <p>Tu lugar favorito para disfrutar de un buen café y momentos especiales.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Horario</h3>
+                <p>Lunes - Viernes: 7:00 - 21:00</p>
+                <p>Sábado - Domingo: 8:00 - 20:00</p>
+            </div>
+            <div class="footer-col">
+                <h3>Contacto</h3>
+                <p>Av. Principal #123</p>
+                <p>Tel: (55) 1234-5678</p>
+                <p>info@cafearoma.com</p>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="#"><span>FB</span></a>
+            <a href="#"><span>IG</span></a>
+            <a href="#"><span>TW</span></a>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Café Aroma. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Cambiar imágenes de promociones aleatoriamente para simular diferentes productos
+        document.addEventListener('DOMContentLoaded', function() {
+            // Array de posibles colores para fondos
+            const colors = ['#f3a683', '#f7d794', '#778beb', '#e77f67', '#cf6a87', '#786fa6'];
+            
+            // Función para obtener un color aleatorio
+            function getRandomColor() {
+                return colors[Math.floor(Math.random() * colors.length)];
+            }
+            
+            // Cambiar el color de fondo de las imágenes para simular diferentes productos
+            const promoImgs = document.querySelectorAll('.promo-img');
+            promoImgs.forEach(img => {
+                img.style.backgroundColor = getRandomColor();
+            });
+            
+            const productImgs = document.querySelectorAll('.product-img');
+            productImgs.forEach(img => {
+                img.style.backgroundColor = getRandomColor();
+            });
+            
+            // Verificar si el usuario viene de la encuesta y mostrar un mensaje de agradecimiento
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('survey') === 'completed') {
+                alert('¡Gracias por completar nuestra encuesta! Tu opinión es muy importante para nosotros.');
+            }
+            
+            // Añadir efecto de desplazamiento suave a los enlaces del menú
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Aquí puedes añadir la lógica para desplazamiento suave si tienes secciones con IDs
+                    console.log('Navegación a: ' + this.textContent);
+                });
+            });
+            
+            // Añadir seguimiento al botón de encuesta
+            const surveyBtn = document.getElementById('survey-btn');
+            surveyBtn.addEventListener('click', function() {
+                console.log('Usuario cliqueó en el botón de encuesta');
+                // Aquí podrías añadir código para seguimiento de eventos o analytics
+            });
+        });
+    </script>
+</body>
 </html>
