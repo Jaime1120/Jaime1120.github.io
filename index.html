@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaime1120.github.io</title>
+    <title>Café Aroma - Tu lugar favorito</title>
     <style>
         * {
             margin: 0;
@@ -66,7 +66,7 @@
 
         .hero {
             height: 400px;
-            background-image: url('/api/placeholder/1200/400');
+            background-image: url('/recursos/banner.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -363,7 +363,7 @@
         <h2 class="section-title">Promociones del Día</h2>
         <div class="promotions">
             <div class="promo-card">
-                <div class="promo-img" style="background-image: url('/api/placeholder/400/200');"></div>
+                <div class="promo-img" style="background-image: url('/recursos/DesayunoCompleto.webp');"></div>
                 <div class="promo-content">
                     <h3 class="promo-title">Desayuno Completo</h3>
                     <p class="promo-desc">Café americano, jugo de naranja y croissant recién horneado.</p>
@@ -374,7 +374,7 @@
                 </div>
             </div>
             <div class="promo-card">
-                <div class="promo-img" style="background-image: url('/api/placeholder/400/200');"></div>
+                <div class="promo-img" style="background-image: url('/recursos/PromoCappucinos.webp');"></div>
                 <div class="promo-content">
                     <h3 class="promo-title">2x1 en Cappuccinos</h3>
                     <p class="promo-desc">Todos los miércoles de 3pm a 6pm disfruta de 2 cappuccinos por el precio de 1.</p>
@@ -385,7 +385,7 @@
                 </div>
             </div>
             <div class="promo-card">
-                <div class="promo-img" style="background-image: url('/api/placeholder/400/200');"></div>
+                <div class="promo-img" style="background-image: url('/recursos/ComboTarde.webp');"></div>
                 <div class="promo-content">
                     <h3 class="promo-title">Combo Tarde</h3>
                     <p class="promo-desc">Latte + rebanada de pastel de zanahoria o chocolate por un precio especial.</p>
@@ -400,7 +400,7 @@
         <h2 class="section-title">Productos Favoritos</h2>
         <div class="favorites">
             <div class="product-card">
-                <div class="product-img" style="background-image: url('/api/placeholder/300/180');"></div>
+                <div class="product-img" style="background-image: url('/recursos/CaféEspecialidad.webp');"></div>
                 <div class="product-content">
                     <h3 class="product-title">Café de Especialidad</h3>
                     <p class="product-desc">Nuestro café de Chiapas con notas de chocolate y frutos rojos.</p>
@@ -408,7 +408,7 @@
                 </div>
             </div>
             <div class="product-card">
-                <div class="product-img" style="background-image: url('/api/placeholder/300/180');"></div>
+                <div class="product-img" style="background-image: url('/recursos/Cheesecake.webp');"></div>
                 <div class="product-content">
                     <h3 class="product-title">Cheesecake</h3>
                     <p class="product-desc">Nuestro famoso cheesecake horneado con base de galleta y salsa de frutos rojos.</p>
@@ -416,7 +416,7 @@
                 </div>
             </div>
             <div class="product-card">
-                <div class="product-img" style="background-image: url('/api/placeholder/300/180');"></div>
+                <div class="product-img" style="background-image: url('/recursos/ColdBrew.webp');"></div>
                 <div class="product-content">
                     <h3 class="product-title">Cold Brew</h3>
                     <p class="product-desc">Café de especialidad extraído en frío durante 24 horas. Suave y refrescante.</p>
@@ -424,7 +424,7 @@
                 </div>
             </div>
             <div class="product-card">
-                <div class="product-img" style="background-image: url('/api/placeholder/300/180');"></div>
+                <div class="product-img" style="background-image: url('/recursos/Croissant.webp');"></div>
                 <div class="product-content">
                     <h3 class="product-title">Croissant de Almendra</h3>
                     <p class="product-desc">Delicioso croissant recién horneado con crema de almendras y azúcar glas.</p>
@@ -471,27 +471,7 @@
     </footer>
 
     <script>
-        // Cambiar imágenes de promociones aleatoriamente para simular diferentes productos
         document.addEventListener('DOMContentLoaded', function() {
-            // Array de posibles colores para fondos
-            const colors = ['#f3a683', '#f7d794', '#778beb', '#e77f67', '#cf6a87', '#786fa6'];
-            
-            // Función para obtener un color aleatorio
-            function getRandomColor() {
-                return colors[Math.floor(Math.random() * colors.length)];
-            }
-            
-            // Cambiar el color de fondo de las imágenes para simular diferentes productos
-            const promoImgs = document.querySelectorAll('.promo-img');
-            promoImgs.forEach(img => {
-                img.style.backgroundColor = getRandomColor();
-            });
-            
-            const productImgs = document.querySelectorAll('.product-img');
-            productImgs.forEach(img => {
-                img.style.backgroundColor = getRandomColor();
-            });
-            
             // Verificar si el usuario viene de la encuesta y mostrar un mensaje de agradecimiento
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('survey') === 'completed') {
